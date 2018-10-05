@@ -4,7 +4,9 @@ from numpy import arange, ndarray, array, shape, copy
 
 def quicksort(arr):
     "Quick sort maafaka"
-    if isinstance(arr, list):
+    if isinstance(arr, range):
+        arr = list(arr)
+    elif isinstance(arr, list):
         arr = array(arr)
     elif not isinstance(arr, ndarray):
         raise Exception("You should provide list or numpy.ndarray")
@@ -15,7 +17,6 @@ def quicksort(arr):
         raise Exception("You must provide a one dimensional list or numpy.ndarray")
 
     def swap(A, i, j):
-        print('Swapping', i, j)
         A[i], A[j] = A[j], A[i]
 
     def sort(A, left, right):
