@@ -56,8 +56,9 @@ def quicksort(arr):
 if __name__ == '__main__':
     try:
         maximum = int(argv[1])
-    except ValueError:
-        stderr.write("You must provide an integral number")
+    except IndexError:
+        stderr.write("You must provide an integral number\n")
+        exit(1)
     a = arange(maximum, 0, -1)
     print(a)
     sortedarr = quicksort(a)
