@@ -1,9 +1,13 @@
+#!/usr/bin/python3
+
 from sys import argv, stderr
 from numpy import arange, ndarray, array, shape, copy
 
-
 def quicksort(arr):
-    "Quick sort maafaka"
+    """
+    Quick sort with Hoar algorithm.
+    Accepts range, list, ndarray.
+    """
     if isinstance(arr, range):
         arr = list(arr)
     elif isinstance(arr, list):
@@ -20,6 +24,7 @@ def quicksort(arr):
         A[i], A[j] = A[j], A[i]
 
     def sort(A, left, right):
+        "Hoar algorithm"
         center = int((left + right) / 2)
         elem = A[center]
         i = left - 1
@@ -39,6 +44,7 @@ def quicksort(arr):
             swap(A, i, j)
 
     def _quicksort(A, left, right):
+        "Helper function"
         if left < right:
             p = sort(A, left, right)
             _quicksort(A, left, p)
