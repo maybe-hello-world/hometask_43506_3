@@ -1,4 +1,5 @@
 from json import dumps
+from sys import argv
 
 def log_parser(filename: str, event_id: int) -> dict:
     """
@@ -28,5 +29,8 @@ def log_parser(filename: str, event_id: int) -> dict:
     }
 
 if __name__ == "__main__":
-    res = log_parser("DhcpSrvLog-Thu.log", 11)
-    print(dumps(res, indent=4))
+    if len(argv) == 3:
+        res = log_parser(argv[1], int(argv[2]))
+        print(dumps(res, indent=4))
+    else:
+        print("Ussage: python LogParser.py <filename> <event_id>")
