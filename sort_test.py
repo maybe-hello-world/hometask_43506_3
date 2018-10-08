@@ -10,5 +10,9 @@ if __name__ == '__main__':
     except (IndexError, TypeError, ValueError):
         print("Incorrect input args")
         exit(1)
-    sort.quick_sort(arr)
+    try:
+        sort.quick_sort(arr)
+    except TypeError as e:
+        print(repr(e))
+        exit(1)
     print(arr)
