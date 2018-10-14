@@ -1,4 +1,5 @@
 from sort import merge_sort
+from logParser import log_parse
 from numpy.testing import assert_array_equal
 
 # test sorting function
@@ -18,3 +19,9 @@ for arr in arrays:
     else:
         print("Input list: [" + ','.join(str(x) for x in arr) + "]")
         print("Result: [" + ','.join(str(x) for x in merge_sort(arr)) + "]")
+
+
+# start parse
+
+log_parse("17", "DhcpSrvLog-Thu.log")
+
