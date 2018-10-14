@@ -1,18 +1,28 @@
-def mergeSort(m):
-    left = []
-    right = []
-    result = []
+import numpy as np
+
+
+# Sort function entry with several type and structure checks.
+def merge_sort(entry):
+    if isinstance(entry, list):
+        try:
+             np.array(entry, float)
+        except ValueError:
+            return ValueError('List should contain only float or integer values, but NaN value found.')
+        else:
+            return sort(entry)
+    else:
+        return ValueError('Input value should be list.')
+
+
+# Main sort func. Slice array and use func for parts.
+def sort(m):
     if len(m) <= 1:
         return m
     else:
-        middle = int(len(m) / 2)
-        left = m[:middle]
-        right = m[middle:]
-        left = mergeSort(left)
-        right = mergeSort(right)
-        return merge(left, right)
+        return merge(sort(m[:int(len(m) / 2)]), sort(m[int(len(m) / 2):]))
 
 
+# Merge two sorted arrays.
 def merge(left, right):
     result = []
     while len(left) > 0 and len(right) > 0:
