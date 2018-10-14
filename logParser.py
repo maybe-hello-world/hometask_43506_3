@@ -12,11 +12,18 @@ def log_parse(event_id, file_name):
                 counter += 1
                 users.append(data[4])
     file.close()
-    create_result_file({"eventId": event_id, "count": counter, "userIPs": users})
+    create_result_file(
+        {
+            "eventId": event_id,
+            "count": counter,
+            "userIPs": users
+        }
+    )
 
 
 # create result json file
 def create_result_file(data):
     with open('result.json', 'w') as file:
         json.dump(data, file)
+    file.close()
     print("File result.json created")
