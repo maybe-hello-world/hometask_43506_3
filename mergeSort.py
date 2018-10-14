@@ -7,11 +7,11 @@ def merge_sort(entry):
         try:
              np.array(entry, float)
         except ValueError:
-            return ValueError('List should contain only float or integer values, but NaN value found.')
+            raise ValueError('List should contain only float or integer values, but NaN value found.')
         else:
             return sort(entry)
     else:
-        return ValueError('Input value should be list.')
+        raise ValueError('Input value should be list.')
 
 
 # Main sort func. Slice array and use func for parts.
