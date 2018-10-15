@@ -57,5 +57,16 @@ class TestBasicFunction(unittest.TestCase):
 
         self.assertTrue('List should contain only float or integer values, but NaN value found.' in str(context.exception))
 
+    def testListContainsNone(self):
+        """
+        Test case on list that contains None values.
+
+        :return: Is is raises value error correctly on None value in list?
+        """
+        with self.assertRaises(ValueError) as context:
+            merge_sort([1, 2, 3, None])
+
+        self.assertTrue('List should not contain any None values. Only int or float is allowed.' in str(context.exception))
+
 if __name__ == '__main__':
     unittest.main()

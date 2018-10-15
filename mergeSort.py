@@ -17,6 +17,10 @@ def merge_sort(entry):
         except ValueError:
             raise ValueError('List should contain only float or integer values, but NaN value found.')
         else:
+            for val in entry:
+                if val is None:
+                    raise ValueError('List should not contain any None values. Only int or float is allowed.')
+
             return sort(entry)
     else:
         raise ValueError('Input value should be list.')
