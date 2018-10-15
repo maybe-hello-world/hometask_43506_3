@@ -1,8 +1,16 @@
 import numpy as np
 
 
-# Sort function entry with several type and structure checks.
+#
 def merge_sort(entry):
+    """
+    Sort function with several type and structure checks.
+
+    Keyword arguments:
+    :param entry: List of int or float values.
+    :return: Sorted list.
+    :raises: ValueError
+    """
     if isinstance(entry, list):
         try:
              np.array(entry, float)
@@ -14,16 +22,29 @@ def merge_sort(entry):
         raise ValueError('Input value should be list.')
 
 
-# Main sort func. Slice array and use func for parts.
 def sort(m):
+    """
+    Merge sort. Slice list to smallest parts, sort and merge them part by part.
+
+    Keyword arguments:
+    :param m: Sorting list.
+    :return: Sorted list.
+    """
     if len(m) <= 1:
         return m
     else:
         return merge(sort(m[:int(len(m) / 2)]), sort(m[int(len(m) / 2):]))
 
 
-# Merge two sorted arrays.
 def merge(left, right):
+    """
+    Merge two sorted lists.
+
+    Keyword arguments:
+    :param left: One list.
+    :param right: Another list.
+    :return: Merged sorted list.
+    """
     result = []
     while len(left) > 0 and len(right) > 0:
         if left[0] <= right[0]:

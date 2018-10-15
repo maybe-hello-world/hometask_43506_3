@@ -1,8 +1,17 @@
 from collections import Counter
 import json
 
-# Parse file with the structure similar to the standard dhcp server logs and save results to the file.
+
 def log_parse(event, file_path):
+    """
+    Parse file with the structure similar to the standard
+    dhcp server logs and save results to the json file,
+    named dhcpDump.json in the same folder.
+
+    Keyword arguments:
+    :param event: Numeric ID of event, from the dhcp table with events meaning.
+    :param file_path: String with a path to the file, containing dhcp logs.
+    """
     with open(file_path, 'r') as file:
         arrIds = []
         for line in file:
@@ -33,7 +42,6 @@ def log_parse(event, file_path):
             json.dump(res, file)
         file.close()
         print('Dump created.')
-
 
 
 log_parse(11, 'DhcpSrvLog-Thu.log')
