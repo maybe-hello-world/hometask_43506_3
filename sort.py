@@ -1,8 +1,12 @@
 import numpy as np
 
 
-# starting method, values check
 def merge_sort(input_arr):
+    """
+    Merge sort for list - init method
+    :param input_arr: list - input list for sorting
+    :return: sorted list or type error
+    """
     if isinstance(input_arr, list):
         try:
             arr = np.array(input_arr, float)
@@ -14,8 +18,12 @@ def merge_sort(input_arr):
         return TypeError("[MergeSort]: input object is not a list")
 
 
-# main sorting method
 def sort(arr):
+    """
+    Main sorting algorithm (uses recursive call)
+    :param arr: numpy array (type float) - current sub array for sorting
+    :return: sorted numpy array
+    """
     if len(arr) <= 1:
         return arr
     else:
@@ -25,8 +33,13 @@ def sort(arr):
         return merge(left, right)
 
 
-# merge two arrays for sort
 def merge(left_arr, right_arr):
+    """
+    Merge two sorted arrays
+    :param left_arr: numpy sorted array (type float)
+    :param right_arr: numpy sorted array (type float)
+    :return: result sorted numpy array (merging two input arrays)
+    """
     result = np.array([], float)
     while len(left_arr) > 0 and len(right_arr) > 0:
         if left_arr[0] <= right_arr[0]:
