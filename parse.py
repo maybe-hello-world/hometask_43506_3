@@ -1,23 +1,35 @@
 import json
 from sys import argv
 
-def get_data(path: str = 'DhcpSrvLog-Thu.log') :
-    """Чтение из файла и построчная запись в lines"""
-    f = open(path)
-    lines = [line.strip() for line in f]
-    f.close()
+"""
+Чтение из файла и построчная запись в lines
+Каждая line парсится на эелменты, разделенные запятой
+Возвразается словарь списков с элементами-значениями из исходного logfile
+"""
+
+
+def get_data(path: str = 'DhcpSrvLog-Thu.log'):
+
+    with open(path, 'r') as f:
+        lines = [line.strip() for line in f]
     data = {}
-    k=0
-    for i in lines:
-        user = i.split(',', -1)
-        data[k] = user
-        k += 1
+    for index,item in enumerate(lines):
+        user = item.split(',', -1)
+        data[index] = user
     return data;
+
+
+"""
+Если запущено без аргументов или аргумент не может быть прочитан как индекс - ищется 32 эвент
+Иначе используется int-аргумент, ищется по нему
+Функция интеративно проходит по словарю, сравнивая первое знаение в списке с event_id, в случае соответствия
+в set(для отсутствия повторов) делается соответствующая запись
+На основе set'a пишется требуемый json
+"""
 
 
 if __name__ == '__main__':
     data = get_data()
-    """По умолчанию считаем для пользователя id=32"""
     if len(argv) == 1 :
         event_id=32
         print("Default user's id was set to 32")

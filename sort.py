@@ -10,19 +10,14 @@ import numpy as np
 
 
 def sort(data: list) -> list:
-    if isinstance(data,list):
-        list_type=int
-        for elem in data:
-            if isinstance(elem,int):
-                pass
-            elif isinstance(elem,float):
-                list_type=float
-            else:
-                raise Exception("At least one element in list is not a number!")
-        arr = np.array(data, float)
-        return np.array(__merge__(arr), list_type).tolist()
-    else:
-        raise Exception("Not a list!")
+    assert isinstance(data,list), "Not a list!"
+    list_type=int
+    for elem in data:
+        assert not isinstance(elem,int) or not isinstance(elem,float),"At least one element in list is not a number!"
+        if isinstance(elem,float):
+            list_type=float
+    arr = np.array(data, float)
+    return np.array(_merge(arr), list_type).tolist()
 
 
 """
@@ -37,13 +32,13 @@ def sort(data: list) -> list:
 """
 
 
-def __merge__(arr: np.array) -> np.array:
+def _merge(arr: np.array) -> np.array:
     if len(arr)<=1:
         return arr
     else:
         middle = round(len(arr)/2)
-        left = __merge__(arr[0:middle])
-        right = __merge__(arr[middle:])
+        left = _merge(arr[0:middle])
+        right = _merge(arr[middle:])
         left_i = right_i = 0
         summary = np.array([],float)
         while left_i < middle and right_i < len(right):
