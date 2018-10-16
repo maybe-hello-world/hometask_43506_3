@@ -17,7 +17,7 @@ class MergeSortingFixed:
 	"""
 	@staticmethod
 	def sort(array: list) -> list:
-		MergeSorting.__verifyInput(array)
+		MergeSortingFixed.__verifyInput(array)
 		length = array.__len__()
 		i = 1
 		while i <= length:
@@ -30,7 +30,7 @@ class MergeSortingFixed:
 				endRightArray = min(j+2*i-1, length)
 				rightArray = array[startRightArray: endRightArray + 1]
 
-				mergedArray = MergeSorting.__mergeArrays(leftArray, rightArray)
+				mergedArray = MergeSortingFixed.__mergeArrays(leftArray, rightArray)
 				array[startLeftArray : endRightArray + 1] = mergedArray
 			i *= 2
 		return array
