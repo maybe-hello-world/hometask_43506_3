@@ -7,7 +7,7 @@ THEAD = "ID,Date,Time,Description,IP Address,Host Name,MAC Address,User Name, Tr
         "CorrelationID,Dhcid,VendorClass(Hex),VendorClass(ASCII),UserClass(Hex),UserClass(ASCII)," \
         "RelayAgentInformation,DnsRegError."
 
-file = 'data/DhcpSrvLog-Thu.log'
+file = 'DhcpSrvLog-Thu.log'
 
 def readlog(file):
     with open(file, "r") as log:
