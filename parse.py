@@ -1,14 +1,14 @@
 import json
 from sys import argv
 
-"""
-Чтение из файла и построчная запись в lines
-Каждая line парсится на эелменты, разделенные запятой
-Возвразается словарь списков с элементами-значениями из исходного logfile
-"""
-
-
 def get_data(path: str = 'DhcpSrvLog-Thu.log'):
+    """
+    Чтение из файла и построчная запись в lines
+    Каждая line парсится на эелменты, разделенные запятой
+    Возвразается словарь списков с элементами-значениями из исходного logfile
+    :param path:
+    :return:
+    """
 
     with open(path, 'r') as f:
         lines = [line.strip() for line in f]
