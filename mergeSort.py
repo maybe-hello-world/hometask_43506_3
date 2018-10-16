@@ -11,16 +11,11 @@ def merge_sort(entry):
     :raises: ValueError
     """
     if isinstance(entry, list):
-        try:
-             np.array(entry, float)
-        except ValueError:
-            raise ValueError('List should contain only float or integer values, but NaN value found.')
-        else:
-            for val in entry:
-                if val is None:
-                    raise ValueError('List should not contain any None values. Only int or float is allowed.')
+        for val in entry:
+            if not (type(val) == int or type(val) == float):
+                raise ValueError('Only int or float value type is allowed.')
 
-            return _sort(entry)
+        return _sort(entry)
     else:
         raise ValueError('Input value should be list.')
 
