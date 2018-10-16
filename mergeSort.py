@@ -1,3 +1,5 @@
+import numpy as np
+
 def merge_sort(entry):
     """
     Sort function with several type and structure checks.
@@ -40,22 +42,22 @@ def _merge(left, right):
     :param right: Another list.
     :return: Merged sorted list.
     """
-    left.reverse()
-    right.reverse()
+    left = np.flip(left)
+    right = np.flip(right)
     result = []
     while len(left) > 0 and len(right) > 0:
         if left[-1] <= right[-1]:
-            result.append(left.pop())
+            result = np.append(result, left[-1])
+            left = np.delete(left, -1)
         else:
-            result.append(right.pop())
+            result = np.append(result, right[-1])
+            right = np.delete(right, -1)
 
-    if left:
-        left.reverse()
-        result.extend(left)
-    if right:
-        right.reverse()
-        result.extend(right)
+    if left.any():
+        left = np.flip(left)
+        result = np.append(result, left)
+    if right.any():
+        right = np.flip(right)
+        result = np.append(result, right)
 
     return result
-
-print(merge_sort([1, 2, 5, 4, 3]))
