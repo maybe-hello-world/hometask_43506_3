@@ -1,7 +1,6 @@
 import numpy as np
 
 
-#
 def merge_sort(entry):
     """
     Sort function with several type and structure checks.
@@ -21,12 +20,12 @@ def merge_sort(entry):
                 if val is None:
                     raise ValueError('List should not contain any None values. Only int or float is allowed.')
 
-            return sort(entry)
+            return _sort(entry)
     else:
         raise ValueError('Input value should be list.')
 
 
-def sort(m):
+def _sort(m):
     """
     Merge sort. Slice list to smallest parts, sort and merge them part by part.
 
@@ -37,10 +36,10 @@ def sort(m):
     if len(m) <= 1:
         return m
     else:
-        return merge(sort(m[:int(len(m) / 2)]), sort(m[int(len(m) / 2):]))
+        return _merge(_sort(m[:int(len(m) / 2)]), _sort(m[int(len(m) / 2):]))
 
 
-def merge(left, right):
+def _merge(left, right):
     """
     Merge two sorted lists.
 
