@@ -1,23 +1,28 @@
 import numpy as np
 
-datalist = [1, 6, 3, 5.9, 4 ]
+datalist = [1, 6, 3, 5.9, 4]
+
 
 # Проверка на дурака
+# Проверяем каждый элемент списка
+# Если не int или float, то вызываем исключение
 def __foolCheck(datalist=[]):
-    try:
-        np.array(datalist, dtype=np.float)
-    except BaseException:
-        print("Not-valid data!")
-        return 0
-    return 1
+    for e in datalist:
+        if (type(e) != int and type(e) != float):
+            raise TypeError("Not-valid data!")
+    TypeError.__traceback__
+
 
 # Основная функция сортировки
+"""
+    Проходим по подмассивам исходного массива начиная с длины 1, последовательно сортируем
+    и увеличиваем длину в 2 раза каждый подмассив (объединяем по парам) и сливая отсортированные 
+    части в исходный пока не привысим длину исходного, после этого получим отсортированный массив
+"""
 def mergesort(datalist):
-    if __foolCheck(datalist) == 0:
-        return -1
+    __foolCheck(datalist)
 
     # Для скорости вычисления превращаем список в массив
-    dataArray = np.zeros(0)
     dataArray = np.array(datalist)
 
     n = dataArray.shape[0]
@@ -48,6 +53,7 @@ def mergesort(datalist):
 
     return result
 
+
 """
 
 Сравниваем элементы разбитого на 2 каунтерами списка
@@ -56,6 +62,8 @@ def mergesort(datalist):
 Иначе извлекаем из правой части (r)
 
 """
+
+
 def __merging(source, target, start, mid, end):
     l = start
     r = mid
