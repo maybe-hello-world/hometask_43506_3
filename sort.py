@@ -10,6 +10,11 @@ import numpy as np
 
 
 def sort(data: list) -> list:
+    """
+    :param data:
+    :type data:
+    :return:
+    """
     assert isinstance(data,list), "Not a list!"
     list_type=int
     for elem in data:
