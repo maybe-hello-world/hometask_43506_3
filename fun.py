@@ -1,26 +1,41 @@
-#check input values
+import numpy as np
+
 def Check_array(arr):
+    """
+    Check array values for type and value
+    :param arr:Array
+    :return: True if all correct, else False and print Error
+    """
     for i in arr:
         try:
             float(i)
-        except BaseException:
+        except ValueError:
+            print(ValueError("Values us not correct"))
+            return False
+        except TypeError:
+            print(TypeError("Type is not correct"))
             return False
     return True
 
-#sort array with QuickSort
 def sort(array):
-    if (len(array)<2):
-        return array
+    """
+    Sort array with Quicksort
+    :param array: Array
+    :return: sorted Array
+    """
+    NumpyArray=np.array(array, float)
+    if (len(NumpyArray)<2):
+        return NumpyArray
     else:
-        opp=array[0]
-        lower = []  # values<opp
-        upper = []  # values>opp
-        equal = []  # values=opp
-        for x in array:
+        opp=NumpyArray[0]
+        lower = np.array([], float)  # values<opp
+        upper = np.array([], float) # values>opp
+        equal = np.array([], float)  # values=opp
+        for x in NumpyArray:
             if (x < opp):
-                lower.append(x)
+                lower=np.append(lower,x)
             if (x > opp):
-                upper.append(x)
+                upper=np.append(upper, x)
             if (x == opp):
-                equal.append(x)
-        return sort(lower) + equal + sort(upper)
+                equal= np.append(equal, x)
+        return  np.concatenate((lower,equal,upper))
