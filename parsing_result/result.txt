@@ -1,0 +1,6 @@
+event_id: 12
+Total amount: 3
+List of computers:
+1. Host Name: NPI182822.avalon.ru, Ip Address: 192.168.17.72
+2. Host Name: NPI182822.avalon.ru, Ip Address: 192.168.17.72
+3. Host Name: NPI182822.avalon.ru, Ip Address: 192.168.17.72
