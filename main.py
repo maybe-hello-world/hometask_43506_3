@@ -15,6 +15,10 @@ event_id = '12'
 
 
 def process_source(source):
+    """
+
+    :param source: a list to process. Could be incorrect value.
+    """
     print('')
     print('There is your source list:')
     print(str(source))

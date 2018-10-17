@@ -10,6 +10,10 @@ class Parser:
     __parsed_records: [] # a log from file as an array of dictionaries
 
     def __init__(self, file_path: str):
+        """
+
+        :param file_path: a path to the file which should be parsed
+        """
         assert isinstance(file_path, str), \
             'file_path should have str type'
         self.file_path = file_path
@@ -58,6 +62,11 @@ class Parser:
 
 
     def process_event(self, event_id: str, output_path: str):
+        """
+
+        :param event_id: an id of event, which should be processed
+        :param output_path: a path to the output file for the result
+        """
         self.__check_event_id(event_id)
         assert isinstance(output_path, str), \
             'Output path should be a str'

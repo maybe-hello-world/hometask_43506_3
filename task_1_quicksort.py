@@ -14,6 +14,11 @@ class Quicksorter:
     # Not sure if it is really legit, but there is quicksort in numpy already, so this method is using it. Just in case.
     @staticmethod
     def do_numpy_quicksort(sorting_list):
+        """
+
+        :param sorting_list: a list to do quicksort using numpy
+        :return: sorted list
+        """
         Quicksorter.__for_numeric_list(sorting_list)
         sorting_array = numpy.asarray(sorting_list)
         sorting_array = numpy.sort(sorting_array, kind='quicksort')
@@ -42,6 +47,11 @@ class Quicksorter:
     # Quicksort function for the task.
     @staticmethod
     def quicksort_list(sorting_list):
+        """
+
+        :param sorting_list: a list to sort
+        :return: sorted list
+        """
         Quicksorter.__check_for_numeric_list(sorting_list)
         sorting_array = numpy.asarray(sorting_list)
         Quicksorter.__quicksort(sorting_array, 0, len(sorting_array)-1)
