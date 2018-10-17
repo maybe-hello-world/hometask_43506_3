@@ -17,25 +17,33 @@ def Check_array(arr):
             return False
     return True
 
-def sort(array):
+def swap(array, firstnum, secondnum):
+    """
+    :param array: Array
+    :param firstnum: Int position of first value 
+    :param secondnum: Int position of second value 
+    :return: nothing
+    """
+    array[firstnum],array[secondnum]=array[secondnum],array[firstnum]
+
+
+
+def sort(array, lower, upper):
     """
     Sort array with Quicksort
     :param array: Array
-    :return: sorted Array
+    :return: nothing
     """
-    NumpyArray=np.array(array, float)
-    if (len(NumpyArray)<2):
-        return NumpyArray
-    else:
-        opp=NumpyArray[0]
-        lower = np.array([], float)  # values<opp
-        upper = np.array([], float) # values>opp
-        equal = np.array([], float)  # values=opp
-        for x in NumpyArray:
-            if (x < opp):
-                lower=np.append(lower,x)
-            if (x > opp):
-                upper=np.append(upper, x)
-            if (x == opp):
-                equal= np.append(equal, x)
-        return  np.concatenate((lower,equal,upper))
+    if (lower<upper):
+        opp=array[lower]
+        i=lower
+        for x in range(lower+1,upper+1):
+            if (array[x] < opp):
+                array[i+1], array[x] = array[x], array[i+1]
+                i=i+1
+        swap(array,lower,i)
+        if (i-1>lower):
+            sort(array,lower,i-1)
+        if (i+1<upper):
+            sort(array,i+1,upper)
+
