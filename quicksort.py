@@ -19,7 +19,7 @@ def quicksort(arr):
             try:
                 float(i)
             except ValueError:
-                print(ValueError("Values us not correct"))
+                print(ValueError("Values are not correct"))
                 return False
             except TypeError:
                 print(TypeError("Type is not correct"))
